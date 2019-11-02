@@ -52,13 +52,13 @@ app.get('/login', function(req, res) {
   // your application requests authorization
   var scope = 'user-read-playback-state';
   res.redirect('https://accounts.spotify.com/authorize?' +
-    querystring.stringify({
-      response_type: 'code',
-      client_id: client_id,
-      scope: scope,
-      redirect_uri: redirect_uri,
-      state: state
-    }));
+      querystring.stringify({
+        response_type: 'code',
+        client_id: client_id,
+        scope: scope,
+        redirect_uri: redirect_uri,
+        state: state
+      }));
 });
 
 app.get('/callback', function(req, res) {
@@ -99,7 +99,7 @@ app.get('/callback', function(req, res) {
             expires_in = body.expires_in;
 
         console.log('everything is fine');
-        res.cookie('refresh_token', refresh_token, {maxAge: 30 * 24 * 3600 * 1000, domain: 'localhost'});
+        res.cookie('refresh_token', refresh_token, {maxAge: 30 * 24 * 3600 * 1000, domain: 'spotify.radioon.de'});
 
         res.render('pages/callback', {
           access_token: access_token,
